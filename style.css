@@ -13,5 +13,12 @@ body {
     width: 20ch;
     margin: auto;
     margin-bottom: 50%;
+    text-align: center;
     background-color: white;
+}
+
+#submitMessage {
+    text-align: center;
+    display: none;
+    color: white;
 }

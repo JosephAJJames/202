@@ -1,6 +1,6 @@
 var input = document.getElementById("input")
-
-
+var form = document.getElementById("display")
+var div = document.getElementById("submitMessage")
 
 const playBeep = (char) => {
     var audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -25,55 +25,21 @@ const acceptable = (int) => {
 }
 
 
-
+var set = ["0" ,"1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 input.addEventListener("keydown", (e) => {
-    if (acceptable(e.key)) {
-        switch (e.key) {
-            case "d":
-                input.value = ""
-                playBeep('L')
-                break
-            case "0":
-                input.value = input.value + "0"
-                playBeep('S')
-                break
-            case "1":
-                input.value = input.value + "1"
-                playBeep('S')
-                break
-            case "2":
-                input.value = input.value + "2"
-                playBeep('S')
-                break
-            case "3":
-                input.value = input.value + "3"
-                playBeep('S')
-                break
-            case "4":
-                input.value = input.value + "4"
-                playBeep('S')
-                break
-            case "5":
-                input.value = input.value + "5"
-                playBeep('S')
-                break
-            case "6":
-                input.value = input.value + "6"
-                playBeep('S')
-                break
-            case "7":
-                input.value = input.value + "7"
-                playBeep('S')
-                break
-            case "8":
-                input.value = input.value + "8"
-                playBeep('S')
-                break
-            case "9":
-                input.value = input.value + "9"
-                playBeep('S')
-                break
+    div.setAttribute("display", "none")
+    if (set.includes(e.key)) {
+        playBeep('S')
+    } else if (e.key == "d") {
+        playBeep('L')
+        input.value = "";
+        e.preventDefault();
+    } else if (e.key == "e") {
+        e.preventDefault();
+        playBeep('L')
+        if (!acceptable(input.value)) {
+            div.setAttribute("display", "block")
         }
     }
 })
